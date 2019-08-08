@@ -52,5 +52,4 @@ export class DepartmentComponent implements OnInit {
   delete(dep: Department) {
 
   }
-
 }
