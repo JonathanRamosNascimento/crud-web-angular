@@ -50,10 +50,14 @@ export class ProductComponent implements OnInit {
     let data = this.productForm.value;
     if (data._id != null) {
       this.productService.update(data)
-        .subscribe();
+        .subscribe(
+          (p) => this.notify("Updated!")
+        );
     } else {
       this.productService.add(data)
-        .subscribe();
+        .subscribe(
+          (p) => this.notify("Inserted!")
+        );
     }
     this.resetForm();
   }

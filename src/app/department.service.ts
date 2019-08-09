@@ -20,7 +20,7 @@ export class DepartmentService {
     if (!this.loaded) {
       this.http.get<Department[]>(this.url)
         .pipe(tap(deps => console.log(deps)),
-        // delay(1000)
+        delay(1000)
         )
         .subscribe(this.departmentsSubject$);
       this.loaded = true;

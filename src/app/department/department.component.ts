@@ -46,13 +46,11 @@ export class DepartmentComponent implements OnInit {
         .subscribe(
           (dep) => {
             console.log(dep);
-            this.clearFields();
             this.notify('Inserted!');
           },
-          (err) => {
-            console.error(err);
-          })
+          (err) => console.error(err))
     }
+    this.clearFields();
   }
 
   clearFields() {
