@@ -23,7 +23,7 @@
                 <mat-select placeholder="Departments" formControlName="departments" multiple>
                     <mat-select-trigger>
                         {{productForm.value.departments ? productForm.value.departments[0]?.name : ''}}
-                        <span *ngIf="productForm.value.departments.length > 1" class="additional-selection">
+                        <span *ngIf="productForm.value.departments?.length > 1" class="additional-selection">
                             (+{{productForm.value.departments.length - 1}}
                             {{productForm.value.departments.length === 2 ? 'other' : 'others'}})
                         </span>
@@ -34,7 +34,7 @@
 
             <div fxLayout="row" fxLayoutAlign="end end">
                 <button mat-button color="primary" fxFlex="10" type="submit">Save</button>
-                <button mat-button color="warn" fxFlex="10" type="cancel">Cancel</button>
+                <button mat-button color="warn" fxFlex="10" type="reset">Cancel</button>
             </div>
         </form>
 
@@ -44,7 +44,7 @@
                 <mat-list-item *ngFor="let prod of products">
                     <mat-icon mat-list-icon>folder</mat-icon>
                     <h4 mat-line>{{prod.name}}</h4>
-                    <h4 mat-line>Price: {{prod.name | currency:"R$ "}} - Stock: {{prod.stock}}</h4>
+                    <h4 mat-line>Price: {{prod.price | currency:"R$ "}} - Stock: {{prod.stock}}</h4>
                     <mat-chip-list mat-line>
                         <mat-chip *ngFor="let d of prod.departments">{{d.name}}</mat-chip>
                     </mat-chip-list>
