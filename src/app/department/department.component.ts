@@ -61,7 +61,7 @@ export class DepartmentComponent implements OnInit {
   }
 
   cancel() {
-
+    this.clearFields();
   }
 
   edit(dep: Department) {
@@ -73,7 +73,7 @@ export class DepartmentComponent implements OnInit {
     this.departmentService.del(dep)
       .subscribe(
         () => this.notify('Removed!'),
-        (err) => console.log(err)
+        (err) => this.notify(err.error.msg)
       )
   }
 

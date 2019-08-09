@@ -1,9 +1,9 @@
 import { MatSnackBar } from '@angular/material';
 import { DepartmentService } from './../department.service';
 import { Product } from './../product';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProductService } from '../product.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { Department } from '../department';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -22,6 +22,8 @@ export class ProductComponent implements OnInit {
     price: [0, [Validators.required, Validators.min(0)]],
     departments: [[], [Validators.required]]
   });
+
+  @ViewChild('form', { static: true }) form: NgForm;
 
   products: Product[] = [];
   departments: Department[] = [];
@@ -53,6 +55,7 @@ export class ProductComponent implements OnInit {
       this.productService.add(data)
         .subscribe();
     }
+    this.resetForm();
   }
 
   delete(p: Product) {
@@ -69,5 +72,10 @@ export class ProductComponent implements OnInit {
 
   notify(msg: string) {
     this.snackBar.open(msg, "OK", { duration: 3000 });
+  }
+
+  resetForm() {
+    // this.productForm.reset();
+    this.form.resetForm();
   }
 }
