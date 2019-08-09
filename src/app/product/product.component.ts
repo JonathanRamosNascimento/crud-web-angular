@@ -42,4 +42,8 @@ export class ProductComponent implements OnInit {
     this.unsubscribe$.next();
   }
 
+  save() {
+    
+  }
+
 }
