@@ -43,7 +43,14 @@ export class ProductComponent implements OnInit {
   }
 
   save() {
-    
+
   }
 
+  delete(p: Product) {
+
+  }
+
+  edit(p: Product){
+
+  }
 }
